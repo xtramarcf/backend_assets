@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: asset_management
+---
+spring:
+  profiles:
+    include: secrets
+---
+application:
+  security:
+    jwt:
+      expiration: 1800000 # 30 minutes
+---
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+---
+spring:
+  main:
+    banner-mode: off
+    log-startup-info: false
+---
+spring:
+  servlet:
+    multipart:
+      max-file-size: 25MB
