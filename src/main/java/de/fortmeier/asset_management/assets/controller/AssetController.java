@@ -88,8 +88,8 @@ public class AssetController {
 
 
     /**
-     *
-     * @param id of the document, which will be returned.
+     * Loads a single document by its assetId
+     * @param id of the asset.
      * @return ResponseEntity with the found document.
      */
     @GetMapping("/load-documents")
@@ -103,7 +103,7 @@ public class AssetController {
 
 
     /**
-     *
+     * Deletes a single document by its assetId and its id.
      * @param assetId of the selected asset.
      * @param docId of the document, which will be deleted
      * @return empty ResponseEntity.
@@ -120,7 +120,7 @@ public class AssetController {
 
 
     /**
-     *
+     * Deletes an asset.
      * @param id of the asset, which will be deleted.
      * @return empty Response Entity.
      */
