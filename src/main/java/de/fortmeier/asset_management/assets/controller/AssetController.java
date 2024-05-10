@@ -129,7 +129,6 @@ public class AssetController {
             @RequestParam("id") int id
     ) {
         assetService.delete(id);
-
         return ResponseEntity.ok().build();
     }
 }
