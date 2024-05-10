@@ -10,4 +10,4 @@ The Webapplication contains a backend and a frontend (GitHub-Repository for the 
 6. The application is now accessable under "localhost:4200".
 
 ## Contact
-For further questions, do not hesistate to contact me under marc.fortmeier@iu-study.org
+For further questions, do not hesistate to contact me under marc.fortmeier@iu-study.org.
