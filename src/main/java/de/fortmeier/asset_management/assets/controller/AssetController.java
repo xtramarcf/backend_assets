@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
+/**
+ * Controller for CRUD operations on Assets
+ */
 @RestController
 @RequestMapping("/asset")
 @RequiredArgsConstructor
@@ -23,7 +27,10 @@ public class AssetController {
 
     private final AssetService assetService;
 
-
+    /**
+     * Finds all assets.
+     * @return list with all Assets
+     */
     @GetMapping("/find-all")
     public ResponseEntity<List<AssetResponse>> findAll() {
 
@@ -39,6 +46,11 @@ public class AssetController {
     }
 
 
+    /**
+     * Save a new asset or an edited asset.
+     * @param assetRequest with information to create or edit an asset.
+     * @return an empty ResponseEntity.
+     */
     @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody AssetRequest assetRequest) {
 
@@ -50,6 +62,12 @@ public class AssetController {
     }
 
 
+    /**
+     * Uploads a document for an asset.
+     * @param file uploaded file. Should be pdf-type.
+     * @param id of the asset, where a file will be added.
+     * @return ResponseEntity, which includes information, if an error occurs.
+     */
     @PostMapping("/upload-document")
     public ResponseEntity<String> uploadDocument(
             @RequestPart("file") MultipartFile file,
@@ -69,6 +87,11 @@ public class AssetController {
     }
 
 
+    /**
+     *
+     * @param id of the document, which will be returned.
+     * @return ResponseEntity with the found document.
+     */
     @GetMapping("/load-documents")
     public ResponseEntity<List<Document>> loadDocumentsById(
             @RequestParam("id") int id) {
@@ -79,6 +102,12 @@ public class AssetController {
     }
 
 
+    /**
+     *
+     * @param assetId of the selected asset.
+     * @param docId of the document, which will be deleted
+     * @return empty ResponseEntity.
+     */
     @DeleteMapping("/delete-document")
     public ResponseEntity<String> deleteDocumentById(
             @RequestParam("assetId") int assetId,
@@ -90,6 +119,11 @@ public class AssetController {
     }
 
 
+    /**
+     *
+     * @param id of the asset, which will be deleted.
+     * @return empty Response Entity.
+     */
     @DeleteMapping("/delete")
     public ResponseEntity<String> delete(
             @RequestParam("id") int id

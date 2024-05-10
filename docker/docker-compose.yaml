@@ -1,18 +1,29 @@
+# docker compose version
 version: '3.9'
+
+# services for the different container
 services:
+  # database-service includes the postgres-db and the cronjob for backups
   database:
+    # image out of dockerfile from docker/database
     image: "xtramarcf/asset_management:database"
+    # env vars for db credentials
     environment:
       - 'POSTGRES_PASSWORD=CXtkhXw96xMQm8'
       - 'POSTGRES_USER=postgres'
       - 'POSTGRES_DB=assetmanagement'
+    # mounted volume for backup
     volumes:
       - "C:/Users/mf.FREUND/Documents/:/var/backups/"
     container_name: database
+  # backend-service with business logik
   backend:
+    # spring application
     image: "xtramarcf/asset_management:backend"
+    # first starts database, then backend
     depends_on:
       - database
+    # env vars for db credentials
     environment:
       - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/assetmanagement'
       - 'SPRING_DATASOURCE_USERNAME=postgres'
@@ -21,7 +32,9 @@ services:
       - "8080:8080"
     container_name: backend
   frontend:
+    # angular frontend
     image: "xtramarcf/asset_management:frontend"
+    # first starts backend, then database
     depends_on:
       - backend
     ports:

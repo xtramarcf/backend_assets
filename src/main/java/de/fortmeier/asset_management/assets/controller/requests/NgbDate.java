@@ -4,5 +4,4 @@ public record NgbDate(
         int year,
         int month,
         int day) {
-
 }
