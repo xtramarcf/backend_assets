@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+  database:
+    image: "xtramarcf/asset_management:database"
+    environment:
+      - 'POSTGRES_PASSWORD=CXtkhXw96xMQm8'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_DB=assetmanagement'
+    volumes:
+      - "C:/Users/mf.FREUND/Documents/:/var/backups/"
+    container_name: database
+  backend:
+    image: "xtramarcf/asset_management:backend"
+    depends_on:
+      - database
+    environment:
+      - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/assetmanagement'
+      - 'SPRING_DATASOURCE_USERNAME=postgres'
+      - 'SPRING_DATASOURCE_PASSWORD=CXtkhXw96xMQm8'
+    ports:
+      - "8080:8080"
+    container_name: backend
+  frontend:
+    image: "xtramarcf/asset_management:frontend"
+    depends_on:
+      - backend
+    ports:
+      - "4200:4200"
+    container_name: frontend

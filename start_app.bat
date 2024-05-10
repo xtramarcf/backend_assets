@@ -1,10 +1,13 @@
 @echo off
 
-REM
+REM navigates to docker directory
+cd docker
+
+REM starts docker-compose as a background task
 docker-compose up -d
 
-REM
+REM waits 15 seconds until next command
 timeout /t 15 >nul
 
-REM Führe den Befehl "cron" im database-Container aus
+REM executes the "cron"-command for starting the backup-cronjob at the database container
 docker exec database cron
