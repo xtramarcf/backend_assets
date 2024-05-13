@@ -16,18 +16,19 @@ services:
     volumes:
       - "C:/Users/mf.FREUND/Documents/:/var/backups/"
     container_name: database
-  # backend-service with business logik
+  # backend-service with business logic
   backend:
     # spring application
     image: "xtramarcf/asset_management:backend"
     # first starts database, then backend
     depends_on:
       - database
-    # env vars for db credentials
+    # env vars for db credentials and admin password
     environment:
       - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/assetmanagement'
       - 'SPRING_DATASOURCE_USERNAME=postgres'
       - 'SPRING_DATASOURCE_PASSWORD=CXtkhXw96xMQm8'
+      - 'KEY_ADMIN-PASSWORD=password1234'
     ports:
       - "8080:8080"
     container_name: backend
