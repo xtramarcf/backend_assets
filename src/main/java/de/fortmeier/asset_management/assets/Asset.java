@@ -1,9 +1,9 @@
-package de.fortmeier.asset_management.assets.domain;
+package de.fortmeier.asset_management.assets;
 
 
-import de.fortmeier.asset_management.assets.controller.requests.AssetRequest;
-import de.fortmeier.asset_management.assets.domain.type.ItemType;
-import de.fortmeier.asset_management.assets.domain.type.PaymentType;
+import de.fortmeier.asset_management.assets.requests.AssetRequest;
+import de.fortmeier.asset_management.assets.type.ItemType;
+import de.fortmeier.asset_management.assets.type.PaymentType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,6 +11,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Asset database Entity
+ */
 
 @Entity
 @Getter

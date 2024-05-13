@@ -8,6 +8,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * Service for authentication.
+ */
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -17,6 +21,11 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
 
+    /**
+     * Authentication method, that proofs if the user exists and if the user is enabled.
+     * @param request with user credentials.
+     * @return the response object, which includes the jwt.
+     */
     @Transactional
     public AuthResponse authenticate(AuthRequest request) {
 

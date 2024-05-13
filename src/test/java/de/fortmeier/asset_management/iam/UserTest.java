@@ -44,6 +44,10 @@ class UserTest {
     private static final String userName = "johnDoe";
     private static final String password = "john1234";
 
+
+    /**
+     * Tests finding, enabling and deleting user.
+     */
     @Test
     @Order(1)
     void saveFindEnableDeleteTest() {
@@ -69,6 +73,9 @@ class UserTest {
     }
 
 
+    /**
+     * Tests enabling and deleting user by request.
+     */
     @Test
     @Order(2)
     void enableDeleteRequestTest() {
@@ -121,6 +128,12 @@ class UserTest {
     }
 
 
+    /**
+     * Authenticates the admin.
+     *
+     * @return the authentication information.
+     * @throws Exception if an error occurs.
+     */
     String authenticate() throws Exception {
         AuthRequest request = new AuthRequest("Admin", adminPassword);
 

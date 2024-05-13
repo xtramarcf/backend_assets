@@ -1,11 +1,8 @@
-package de.fortmeier.asset_management.assets.controller;
+package de.fortmeier.asset_management.assets;
 
 
-import de.fortmeier.asset_management.assets.controller.requests.AssetRequest;
-import de.fortmeier.asset_management.assets.controller.requests.AssetResponse;
-import de.fortmeier.asset_management.assets.domain.Asset;
-import de.fortmeier.asset_management.assets.domain.Document;
-import de.fortmeier.asset_management.assets.service.AssetService;
+import de.fortmeier.asset_management.assets.requests.AssetRequest;
+import de.fortmeier.asset_management.assets.requests.AssetResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

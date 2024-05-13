@@ -2,15 +2,18 @@ spring:
   application:
     name: asset_management
 ---
+# adding profile with db credentials and jwt secret
 spring:
   profiles:
     include: secrets
 ---
+# time for the validity of jwt tokens can be set here
 application:
   security:
     jwt:
       expiration: 1800000 # 30 minutes
 ---
+# datasource configs
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -29,6 +32,7 @@ spring:
     banner-mode: off
     log-startup-info: false
 ---
+# max size of 25MB for uploading files
 spring:
   servlet:
     multipart:

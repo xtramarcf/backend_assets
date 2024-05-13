@@ -1,12 +1,26 @@
-package de.fortmeier.asset_management.assets.controller.requests;
+package de.fortmeier.asset_management.assets.requests;
 
 
-import de.fortmeier.asset_management.assets.domain.Asset;
-import de.fortmeier.asset_management.assets.domain.Document;
+import de.fortmeier.asset_management.assets.Asset;
+import de.fortmeier.asset_management.assets.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Record for sending Asset to the frontend.
+ * @param id
+ * @param itemType
+ * @param name
+ * @param description
+ * @param owner
+ * @param paymentType
+ * @param price
+ * @param lendable
+ * @param borrowedAt
+ * @param returnAt
+ * @param docs
+ */
 public record AssetResponse(
         Integer id,
         String itemType,
@@ -21,6 +35,11 @@ public record AssetResponse(
         List<DocumentDto> docs
 ) {
 
+    /**
+     * Method for converting an asset to an assetResponse.
+     * @param asset
+     * @return assetResponse
+     */
     public static AssetResponse fromAsset(Asset asset) {
 
         List<DocumentDto> documentDtoList = new ArrayList<>();

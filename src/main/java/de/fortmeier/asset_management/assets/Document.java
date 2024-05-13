@@ -1,10 +1,13 @@
-package de.fortmeier.asset_management.assets.domain;
+package de.fortmeier.asset_management.assets;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Document database Entity.
+ */
 
 @Getter
 @Setter

@@ -1,5 +1,8 @@
-package de.fortmeier.asset_management.assets.domain.type;
+package de.fortmeier.asset_management.assets.type;
 
+/**
+ * Possible asset types
+ */
 public enum ItemType {
 
     CONTRACT,

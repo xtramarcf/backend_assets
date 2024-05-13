@@ -1,11 +1,8 @@
-package de.fortmeier.asset_management.assets.service;
+package de.fortmeier.asset_management.assets;
 
 
-import de.fortmeier.asset_management.assets.domain.Asset;
-import de.fortmeier.asset_management.assets.domain.Document;
-import de.fortmeier.asset_management.assets.domain.type.ItemType;
-import de.fortmeier.asset_management.assets.domain.type.PaymentType;
-import de.fortmeier.asset_management.assets.repository.AssetRepository;
+import de.fortmeier.asset_management.assets.type.ItemType;
+import de.fortmeier.asset_management.assets.type.PaymentType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +13,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+/**
+ * Service which contains the business logic for assets.
+ */
 
 @Service
 @RequiredArgsConstructor
@@ -44,6 +45,11 @@ public class AssetService {
         assetRepository.deleteById(id);
     }
 
+    /**
+     * Deletes a document by assetId and docId.
+     * @param assetId id of the asset.
+     * @param docId id of the document.
+     */
 
     @Transactional
     public void deleteDocument(int assetId, int docId) {
@@ -56,6 +62,13 @@ public class AssetService {
     }
 
 
+    /**
+     * Safes a document to an asset.
+     * @param id of the asset.
+     * @param file Multipart pdf-file.
+     * @throws IOException for accessing the MultipartFile.
+     * @throws IllegalStateException if there is no asset with the given id.
+     */
     @Transactional
     public void safeDocument(int id, MultipartFile file) throws IOException, IllegalStateException {
 
@@ -63,7 +76,7 @@ public class AssetService {
         document.setAsset(
                 findById(id).orElseThrow()
         );
-        Asset asset = assetRepository.findById(id).orElseThrow(IllegalAccessError::new);
+        Asset asset = assetRepository.findById(id).orElseThrow(IllegalStateException::new);
         List<Document> documentList = new ArrayList<>();
         if (asset.getDocuments() != null) documentList.addAll(asset.getDocuments());
         documentList.add(document);
@@ -77,7 +90,12 @@ public class AssetService {
         return assetRepository.findDocumentsByAssetId(id);
     }
 
-
+    /**
+     * Creates a Document-Object out of the MultipartFile.
+     * @param file received MultipartFile.
+     * @return the built Document-Object.
+     * @throws IOException if there is an error by accessing the file- data.
+     */
     public Document getDocumentFromMultipartFile(MultipartFile file) throws IOException {
         return Document.builder()
                 .docName(file.getOriginalFilename())
@@ -86,6 +104,9 @@ public class AssetService {
     }
 
 
+    /**
+     * Method for creating and saving three example assets.
+     */
     public void saveExampleAsset() {
 
         if (!findAll().isEmpty()) return;

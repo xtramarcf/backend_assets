@@ -8,6 +8,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * RegistrationRequest-Object with validation.
+ */
 @Data
 @Builder
 @AllArgsConstructor

@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller with all user requests.
+ */
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
@@ -14,6 +17,11 @@ public class UserController {
 
     private final UserService userService;
 
+    /**
+     * Gets all user.
+     *
+     * @return the Response Entity with the status code and all found user in its body.
+     */
     @GetMapping("/get-all")
     public ResponseEntity<List<UserDto>> getAllUser() {
         List<User> users = userService.findAll();
@@ -33,6 +41,12 @@ public class UserController {
         return ResponseEntity.ok(userDtoList);
     }
 
+    /**
+     * Enables a registered user by the userName.
+     *
+     * @param userName Name of the user, which will be enabled.
+     * @return the Response Entity with the status code.
+     */
     @PostMapping("/enable")
     public ResponseEntity<String> enableUser(@RequestParam("userName") String userName) {
 
@@ -46,6 +60,11 @@ public class UserController {
 
     }
 
+    /**
+     * Deletes a user by the userName.
+     * @param userName Name of the user, which will be deleted.
+     * @return a Response Entity with the status code.
+     */
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteUser(@RequestParam("userName") String userName) {
 

@@ -5,6 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Authenticate Request with user credentials.
+ */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

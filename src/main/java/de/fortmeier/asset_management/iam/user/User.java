@@ -13,6 +13,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+
+/**
+ * User entity for the database.
+ */
 @Data
 @Builder
 @NoArgsConstructor

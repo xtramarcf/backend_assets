@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
+/**
+ * Service with registration business logic.
+ */
 @Service
 @RequiredArgsConstructor
 public class RegistrationService {
@@ -19,6 +23,11 @@ public class RegistrationService {
     @Value("${key.admin-password}")
     String adminPassword;
 
+    /**
+     * Registers a user by the given user credentials.
+     *
+     * @param request contains the user credentials.
+     */
     public void register(RegistrationRequest request) {
 
         if (userService.findByUserName(request.getUserName()).isPresent()) {
@@ -37,6 +46,9 @@ public class RegistrationService {
     }
 
 
+    /**
+     * Registers the admin-user, if the user does not exist.
+     */
     public void registerAdmin() {
 
         if (userService.findByUserName("Admin").isPresent()) return;

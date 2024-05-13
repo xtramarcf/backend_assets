@@ -1,10 +1,17 @@
-package de.fortmeier.asset_management.assets.controller.requests;
+package de.fortmeier.asset_management.assets.requests;
 
-import de.fortmeier.asset_management.assets.domain.Document;
+import de.fortmeier.asset_management.assets.Document;
 
 import java.util.Arrays;
 import java.util.Objects;
 
+
+/**
+ * Record for transmitting Documents.
+ * @param id
+ * @param docName
+ * @param content
+ */
 public record DocumentDto(
         Integer id,
         String docName,

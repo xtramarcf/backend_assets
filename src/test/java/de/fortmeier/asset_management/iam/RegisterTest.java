@@ -26,6 +26,9 @@ class RegisterTest {
     private static final String userName = "johnDoe";
     private static final String password = "john1234";
 
+    /**
+     * Tests register Admin.
+     */
     @Test
     @Order(1)
     void registerAdminTest() {
@@ -35,7 +38,9 @@ class RegisterTest {
         Assertions.assertEquals("ADMIN", userService.findByUserName("Admin").orElseThrow().getRole().name());
     }
 
-
+    /**
+     * Tests register user.
+     */
     @Test
     @Order(2)
     void registerTest() {

@@ -1,13 +1,14 @@
-package de.fortmeier.asset_management.assets.repository;
+package de.fortmeier.asset_management.assets;
 
-import de.fortmeier.asset_management.assets.domain.Asset;
-import de.fortmeier.asset_management.assets.domain.Document;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Repository for accessing the assets from the database.
+ */
 @Repository
 public interface AssetRepository extends JpaRepository<Asset, Integer> {
 

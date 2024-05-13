@@ -3,13 +3,13 @@ package de.fortmeier.asset_management.asset;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.fortmeier.asset_management.assets.controller.requests.AssetRequest;
-import de.fortmeier.asset_management.assets.controller.requests.AssetResponse;
+import de.fortmeier.asset_management.assets.requests.AssetRequest;
+import de.fortmeier.asset_management.assets.requests.AssetResponse;
 
-import de.fortmeier.asset_management.assets.domain.Asset;
-import de.fortmeier.asset_management.assets.domain.type.ItemType;
-import de.fortmeier.asset_management.assets.domain.type.PaymentType;
-import de.fortmeier.asset_management.assets.service.AssetService;
+import de.fortmeier.asset_management.assets.Asset;
+import de.fortmeier.asset_management.assets.type.ItemType;
+import de.fortmeier.asset_management.assets.type.PaymentType;
+import de.fortmeier.asset_management.assets.AssetService;
 import de.fortmeier.asset_management.iam.auth.AuthRequest;
 import de.fortmeier.asset_management.iam.auth.AuthResponse;
 import org.junit.jupiter.api.*;
@@ -32,6 +32,9 @@ import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Tests all asset classes.
+ */
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Transactional
@@ -53,6 +56,9 @@ class AssetTest {
     private final String owner = "johnDoe";
     private final LocalDate returnAt = LocalDate.now().plusDays(100);
 
+    /**
+     * Tests saving, finding, and deleting assets.
+     */
     @Test
     @Order(1)
     void assetSaveFindDeleteTest() {
@@ -74,9 +80,12 @@ class AssetTest {
     }
 
 
+    /**
+     * Tests saving document function.
+     */
     @Test
     @Order(2)
-    void testSafeDocument() {
+    void testSaveDocument() {
 
         Asset asset = new Asset();
         asset.setDescription(description);
@@ -104,6 +113,9 @@ class AssetTest {
     }
 
 
+    /**
+     * Tests find all assets request.
+     */
     @Test
     @Order(3)
     void saveFindDeleteRequestTest() {
@@ -115,7 +127,7 @@ class AssetTest {
             Assertions.fail(e);
         }
 
-        safe(token);
+        saveAsset(token);
 
         try {
 
@@ -138,6 +150,9 @@ class AssetTest {
     }
 
 
+    /**
+     * Tests upload document request.
+     */
     @Test
     @Order(4)
     void safeUploadDocRequestTest() {
@@ -149,7 +164,7 @@ class AssetTest {
             Assertions.fail(e);
         }
 
-        safe(token);
+        saveAsset(token);
 
         Integer id = assetService.findAll().get(0).getId();
 
@@ -175,6 +190,9 @@ class AssetTest {
     }
 
 
+    /**
+     * Tests delete asset request.
+     */
     @Test
     @Order(5)
     void deleteRequestTest() {
@@ -186,7 +204,7 @@ class AssetTest {
             Assertions.fail(e);
         }
 
-        safe(token);
+        saveAsset(token);
 
         Integer id = assetService.findAll().get(0).getId();
 
@@ -207,7 +225,11 @@ class AssetTest {
     }
 
 
-    void safe(String token) {
+    /**
+     * Saves asset by request.
+     * @param token jwt token for authorization.
+     */
+    void saveAsset(String token) {
 
         AssetRequest asset = new AssetRequest(
                 null,
@@ -237,6 +259,12 @@ class AssetTest {
         }
     }
 
+    /**
+     * Authenticates the admin.
+     *
+     * @return authentication information.
+     * @throws Exception if error occurs.
+     */
     String authenticate() throws Exception {
         AuthRequest request = new AuthRequest("Admin", adminPassword);
 

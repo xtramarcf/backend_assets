@@ -14,7 +14,7 @@ services:
       - 'POSTGRES_DB=assetmanagement'
     # mounted volume for backup
     volumes:
-      - "C:/Users/mf.FREUND/Documents/:/var/backups/"
+      - "C:/Users/marcf/Documents/:/var/backups/"
     container_name: database
   # backend-service with business logic
   backend:
@@ -28,7 +28,7 @@ services:
       - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/assetmanagement'
       - 'SPRING_DATASOURCE_USERNAME=postgres'
       - 'SPRING_DATASOURCE_PASSWORD=CXtkhXw96xMQm8'
-      - 'KEY_ADMIN-PASSWORD=password1234'
+      - 'KEY_ADMIN-PASSWORD=password123456'
     ports:
       - "8080:8080"
     container_name: backend

@@ -7,6 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service with business logic for all user operations.
+ */
 @Service
 @RequiredArgsConstructor
 @Transactional

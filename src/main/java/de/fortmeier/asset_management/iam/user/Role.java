@@ -9,6 +9,9 @@ import java.util.Collection;
 import java.util.List;
 
 
+/**
+ * Defines the both roles for the identity-and access management.
+ */
 @RequiredArgsConstructor
 public enum Role {
 

@@ -12,24 +12,39 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * Configuration for spring authentication process.
+ */
 @Configuration
 @RequiredArgsConstructor
-public class AccountManagementConfig {
+public class IamConfig {
 
     private final UserService userService;
 
+    /**
+     * @return an object of the UserDetailsService with the username.
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> userService.findByUserName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
+
+    /**
+     * Defines a BCryptPasswordEncoder and adds it to the core container.
+     * @return the encoder.
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 
+    /**
+     * Creates and configures the authenticationProvider. Adds it to the core container.
+     * @return the provider.
+     */
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -39,6 +54,12 @@ public class AccountManagementConfig {
     }
 
 
+    /**
+     * Creates the Authentication Manager and adds it to the core container
+     * @param config injects the configuration.
+     * @return the Authentication Manager.
+     * @throws Exception for error.
+     */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();

@@ -13,6 +13,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * Security Configuration with the spring security filter chain.
+ */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -20,6 +23,8 @@ public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final AuthenticationProvider authenticationProvider;
+
+
     private static final String[] WHITE_LIST_URL = {
             "/auth/**",
             "/register"
@@ -34,6 +39,13 @@ public class SecurityConfig {
             "/backup/**"
     };
 
+    /**
+     * Method, that creates, configures and returns the spring securityFilterChain.
+     *
+     * @param http injecting the httpSecurity.
+     * @return the configured httpSecurity.
+     * @throws Exception if error.
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http

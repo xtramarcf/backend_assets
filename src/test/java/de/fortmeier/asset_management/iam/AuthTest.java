@@ -39,6 +39,10 @@ class AuthTest {
     @Value("${key.admin-password}")
     String adminPassword;
 
+
+    /**
+     * Tests authentication.
+     */
     @Test
     @Order(1)
     void authenticateTest() {
@@ -52,6 +56,9 @@ class AuthTest {
     }
 
 
+    /**
+     * Tests authentication request.
+     */
     @Test
     @Order(2)
     void authenticateRequestTest() {
