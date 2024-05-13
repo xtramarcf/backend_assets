@@ -10,5 +10,9 @@ The Webapplication contains a backend and a frontend (GitHub-Repository for the 
 6. Run the start_app.bat for Windows. For Linux, you can run "docker-compose up -d" and then, after 15 seconds, run "docker exec database cron".
 7. The application is now accessible under "localhost:4200".
 
+## Documentation
+The code contains javadoc comments and uses speaking variable and method names. An overview of the application is represented 
+by an uml-class-diagram for the function-block 'assets' and for the 'iam' (https://github.com/xtramarcf/backend_assets/tree/master/uml).
+
 ## Contact
 For further questions, do not hesitate to contact me under marc.fortmeier@iu-study.org.
