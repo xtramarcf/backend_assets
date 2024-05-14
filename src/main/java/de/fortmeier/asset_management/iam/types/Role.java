@@ -1,4 +1,4 @@
-package de.fortmeier.asset_management.iam.user;
+package de.fortmeier.asset_management.iam.types;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

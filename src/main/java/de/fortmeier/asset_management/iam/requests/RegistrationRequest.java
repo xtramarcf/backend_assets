@@ -1,4 +1,4 @@
-package de.fortmeier.asset_management.iam.register;
+package de.fortmeier.asset_management.iam.requests;
 
 
 import jakarta.validation.constraints.NotNull;

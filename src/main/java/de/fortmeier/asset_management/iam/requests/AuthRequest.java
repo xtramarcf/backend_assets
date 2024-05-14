@@ -1,4 +1,4 @@
-package de.fortmeier.asset_management.iam.auth;
+package de.fortmeier.asset_management.iam.requests;
 
 
 import lombok.AllArgsConstructor;

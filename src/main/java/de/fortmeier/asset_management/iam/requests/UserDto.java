@@ -1,4 +1,4 @@
-package de.fortmeier.asset_management.iam.user;
+package de.fortmeier.asset_management.iam.requests;
 
 
 /**

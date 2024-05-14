@@ -1,6 +1,6 @@
 package de.fortmeier.asset_management.iam.config;
 
-import de.fortmeier.asset_management.iam.user.Role;
+import de.fortmeier.asset_management.iam.types.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,8 +26,9 @@ public class SecurityConfig {
 
 
     private static final String[] WHITE_LIST_URL = {
-            "/auth/**",
-            "/register"
+            "/iam/login",
+            "/iam/logout",
+            "/iam/register"
     };
 
     private static final String[] USER_URLS = {
@@ -35,8 +36,7 @@ public class SecurityConfig {
     };
 
     private static final String[] ADMIN_URLS = {
-            "/users/**",
-            "/backup/**"
+            "/iam/**",
     };
 
     /**

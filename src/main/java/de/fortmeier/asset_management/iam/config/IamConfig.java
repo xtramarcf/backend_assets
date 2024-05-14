@@ -1,6 +1,6 @@
 package de.fortmeier.asset_management.iam.config;
 
-import de.fortmeier.asset_management.iam.user.UserService;
+import de.fortmeier.asset_management.iam.IamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +8,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -19,20 +18,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @RequiredArgsConstructor
 public class IamConfig {
 
-    private final UserService userService;
+    private final IamRepository iamRepository;
 
     /**
-     * @return an object of the UserDetailsService with the username.
+     * @return an object of the UserDetailsConfig with the username.
      */
     @Bean
-    public UserDetailsService userDetailsService() {
-        return username -> userService.findByUserName(username)
+    public org.springframework.security.core.userdetails.UserDetailsService userDetailsService() {
+        return username -> iamRepository.findByUserName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
-
     /**
      * Defines a BCryptPasswordEncoder and adds it to the core container.
+     *
      * @return the encoder.
      */
     @Bean
@@ -43,6 +42,7 @@ public class IamConfig {
 
     /**
      * Creates and configures the authenticationProvider. Adds it to the core container.
+     *
      * @return the provider.
      */
     @Bean
@@ -56,6 +56,7 @@ public class IamConfig {
 
     /**
      * Creates the Authentication Manager and adds it to the core container
+     *
      * @param config injects the configuration.
      * @return the Authentication Manager.
      * @throws Exception for error.

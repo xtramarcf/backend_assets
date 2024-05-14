@@ -10,8 +10,8 @@ import de.fortmeier.asset_management.assets.Asset;
 import de.fortmeier.asset_management.assets.type.ItemType;
 import de.fortmeier.asset_management.assets.type.PaymentType;
 import de.fortmeier.asset_management.assets.AssetService;
-import de.fortmeier.asset_management.iam.auth.AuthRequest;
-import de.fortmeier.asset_management.iam.auth.AuthResponse;
+import de.fortmeier.asset_management.iam.requests.AuthRequest;
+import de.fortmeier.asset_management.iam.requests.AuthResponse;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -268,7 +268,7 @@ class AssetTest {
     String authenticate() throws Exception {
         AuthRequest request = new AuthRequest("Admin", adminPassword);
 
-        ResultActions resultActions = this.mockMvc.perform(post("/auth/authenticate")
+        ResultActions resultActions = this.mockMvc.perform(post("/iam/login")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(
