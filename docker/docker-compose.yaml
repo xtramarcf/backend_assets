@@ -14,7 +14,7 @@ services:
       - 'POSTGRES_DB=assetmanagement'
     # mounted volume for backup
     volumes:
-      - "C:/Users/marcf/Documents/:/var/backups/"
+      - "C:/Users/mf.FREUND/Documents/:/var/backups/"
     container_name: database
   # backend-service with business logic
   backend:

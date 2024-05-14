@@ -14,7 +14,7 @@ frontend: https://github.com/xtramarcf/frontend_assets).
 5. Change the volume-directory at services.database.volumes to the directory, where the backups will be stored. Leave
    the part ":/var/backups/" untouched.
 6. Run the start_app.bat for Windows. For Linux, you can navigate to the folder with the two files and run "
-   docker-compose up -d" and then, after 15 seconds, run "
+   docker-compose up -d" and then, after 30 seconds, run "
    docker exec database cron".
 7. The application is now accessible under "localhost:4200".
 
