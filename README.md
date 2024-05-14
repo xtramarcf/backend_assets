@@ -7,7 +7,7 @@ frontend: https://github.com/xtramarcf/frontend_assets).
 
 1. Docker Engine needs to be installed on the host-system.
 2. Download the docker-compose-file (https://github.com/xtramarcf/backend_assets/blob/master/docker/docker-compose.yaml)
-   and the startup-file (https://github.com/xtramarcf/backend_assets/blob/master/start_app.bat) and put them into one
+   and the startup-file (https://github.com/xtramarcf/backend_assets/blob/master/docker/start_app.bat) and put them into one
    folder.
 3. Replace the POSTGRES_PASSWORD and the SPRING_DATASOURCE_PASSWORD with your own safe password.
 4. Set a new Admin Password. You can log in to the Admin-Account with the user "Admin" and your set password.
