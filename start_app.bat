@@ -1,8 +1,5 @@
 @echo off
 
-REM navigates to docker directory
-cd docker
-
 REM starts docker-compose as a background task
 docker-compose up -d
 
