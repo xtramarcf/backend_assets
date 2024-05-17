@@ -23,7 +23,7 @@ frontend: https://github.com/xtramarcf/frontend_assets).
 The code contains javadoc comments and uses speaking variable and method names. An overview of the application is
 represented
 by an uml-class-diagram for the function-block 'assets' and for the '
-iam' (https://github.com/xtramarcf/backend_assets/tree/master/uml).
+iam' (https://github.com/xtramarcf/backend_assets/tree/master/docs).
 
 ## Contact
 
